@@ -4171,7 +4171,6 @@ dependencies = [
  "sp-runtime",
  "sp-sandbox",
  "sp-std",
- "wabt",
  "wasmi-validation",
  "wat",
 ]
