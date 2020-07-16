@@ -52,9 +52,35 @@ fn create_max_funded_user<T: Trait>(string: &'static str, n: u32) -> T::AccountI
 	user
 }
 
+fn expanded_contract<T: Trait>(expansions: u32) -> (Vec<u8>, <T::Hashing as Hash>::Output) {
+    const CONTRACT_START: &str = r#"
+        (module
+            (func (export "deploy"))
+            (func (export "call")
+
+    "#;
+    const CONTRACT_EXPANSION: &str = "(block (nop))\n";
+    const CONTRACT_END: &str = "))";
+    let expansion_len = CONTRACT_EXPANSION.len() * expansions as usize;
+    let len = CONTRACT_START.len() + expansion_len + CONTRACT_END.len();
+    let mut contract = String::with_capacity(len);
+    contract.push_str(CONTRACT_START);
+    for _ in 1 .. expansions {
+        contract.push_str(CONTRACT_EXPANSION);
+    }
+    contract.push_str(CONTRACT_END);
+    compile_code::<T>(&contract)
+}
+
 benchmarks! {
     _ {
     }
+
+    put_code {
+        let n in 0 .. 65_000;
+        let caller = create_max_funded_user::<T>("caller", 0);
+        let (binary, hash) = expanded_contract::<T>(n);
+    }: _(RawOrigin::Signed(caller), binary)
 
     instantiate {
         // The size of the data has no influence on the costs of this extrinsic
@@ -118,7 +144,14 @@ benchmarks! {
 mod tests {
     use super::*;
     use crate::tests::{ExtBuilder, Test};
-	use frame_support::assert_ok;
+    use frame_support::assert_ok;
+
+    #[test]
+    fn put_code() {
+		ExtBuilder::default().build().execute_with(|| {
+			assert_ok!(test_benchmark_put_code::<Test>());
+		});
+    }
 
     #[test]
     fn instantiate() {
