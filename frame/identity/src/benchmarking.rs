@@ -43,6 +43,7 @@ fn add_registrars<T: Trait>(r: u32) -> Result<(), &'static str> {
 		let fields = IdentityFields(
 			IdentityField::Display | IdentityField::Legal | IdentityField::Web | IdentityField::Riot
 			| IdentityField::Email | IdentityField::PgpFingerprint | IdentityField::Image | IdentityField::Twitter
+			| IdentityField::Totem
 		);
 		Identity::<T>::set_fields(RawOrigin::Signed(account::<T>("registrar", i)).into(), i.into(), fields)?;
 	}
@@ -97,6 +98,7 @@ fn create_identity_info<T: Trait>(num_fields: u32) -> IdentityInfo {
 		pgp_fingerprint: Some([0; 20]),
 		image: data.clone(),
 		twitter: data.clone(),
+		totem: data.clone(),
 	};
 
 	return info
@@ -282,6 +284,7 @@ benchmarks! {
 		let fields = IdentityFields(
 			IdentityField::Display | IdentityField::Legal | IdentityField::Web | IdentityField::Riot
 			| IdentityField::Email | IdentityField::PgpFingerprint | IdentityField::Image | IdentityField::Twitter
+			| IdentityField::Totem
 		);
 	}: _(RawOrigin::Signed(caller), r, fields)
 
