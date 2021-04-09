@@ -1721,7 +1721,7 @@ dependencies = [
  "linregress",
  "log",
  "parity-scale-codec",
- "paste 1.0.4",
+ "paste 1.0.5",
  "serde",
  "sp-api",
  "sp-io",
@@ -1809,7 +1809,7 @@ dependencies = [
  "once_cell",
  "parity-scale-codec",
  "parity-util-mem",
- "paste 1.0.4",
+ "paste 1.0.5",
  "pretty_assertions",
  "serde",
  "smallvec 1.6.1",
@@ -4791,7 +4791,7 @@ dependencies = [
  "pallet-timestamp",
  "parity-scale-codec",
  "parity-wasm 0.41.0",
- "paste 1.0.4",
+ "paste 1.0.5",
  "pretty_assertions",
  "pwasm-utils 0.16.0",
  "rand 0.7.3",
@@ -4888,7 +4888,7 @@ dependencies = [
  "pallet-balances",
  "parity-scale-codec",
  "parking_lot 0.11.1",
- "paste 1.0.4",
+ "paste 1.0.5",
  "rand 0.7.3",
  "serde",
  "sp-arithmetic",
@@ -5419,7 +5419,7 @@ dependencies = [
  "pallet-timestamp",
  "parity-scale-codec",
  "parking_lot 0.11.1",
- "paste 1.0.4",
+ "paste 1.0.5",
  "rand_chacha 0.2.2",
  "serde",
  "sp-application-crypto",
@@ -5853,9 +5853,9 @@ dependencies = [
 
 [[package]]
 name = "paste"
-version = "1.0.4"
+version = "1.0.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c5d65c4d95931acda4498f675e332fcbdc9a06705cd07086c510e9b6009cd1c1"
+checksum = "acbf547ad0c65e31259204bd90935776d1c693cec2f4ff7abb7a1bbbd40dfe58"
 
 [[package]]
 name = "paste-impl"
@@ -7337,7 +7337,7 @@ dependencies = [
  "parity-scale-codec",
  "parity-wasm 0.41.0",
  "parking_lot 0.11.1",
- "paste 1.0.4",
+ "paste 1.0.5",
  "sc-executor-common",
  "sc-executor-wasmi",
  "sc-executor-wasmtime",
@@ -8975,7 +8975,7 @@ dependencies = [
  "log",
  "parity-scale-codec",
  "parity-util-mem",
- "paste 1.0.4",
+ "paste 1.0.5",
  "rand 0.7.3",
  "serde",
  "serde_json",
@@ -10809,7 +10809,7 @@ dependencies = [
  "indexmap",
  "libc",
  "log",
- "paste 1.0.4",
+ "paste 1.0.5",
  "region",
  "rustc-demangle",
  "serde",
